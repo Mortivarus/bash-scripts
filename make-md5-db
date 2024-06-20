@@ -1,0 +1,14 @@
+#!/bin/bash
+datum=$(date +%Y%m%d-%H%M%S)
+folder=${PWD##*/}
+md5db=$datum.md5.$folder.txt
+
+setMD5Db(){
+    if [[ $1 != *"md5"* ]]; then
+        md5sum "$1"
+    fi
+}
+
+export -f setMD5Db
+
+find * -type f -exec /bin/bash -c 'setMD5Db "$1"' bash {} \; > $md5db
