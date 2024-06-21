@@ -1,7 +1,7 @@
 #!/bin/bash
 datum=$(date +%Y%m%d-%H%M%S)
 folder=${PWD##*/}
-md5db=$datum.md5.$folder.txt
+md5db=$datum.$folder.md5
 
 setMD5Db(){
     if [[ $1 != *"md5"* ]]; then
